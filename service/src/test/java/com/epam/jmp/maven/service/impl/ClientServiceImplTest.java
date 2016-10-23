@@ -12,6 +12,7 @@ import java.util.List;
 
 import static java.util.Collections.singletonList;
 import static junit.framework.TestCase.assertEquals;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -25,7 +26,7 @@ public class ClientServiceImplTest {
     private ClientRepository clientRepository;
 
     @Test
-    public void test() {
+    public void testFindAllClients() {
         Client client = new Client();
         List<Client> clients = singletonList(client);
         when(clientRepository.findAll()).thenReturn(clients);
@@ -34,5 +35,42 @@ public class ClientServiceImplTest {
 
         assertEquals(clients, allClients);
         verify(clientRepository).findAll();
+    }
+
+    @Test
+    public void testCreateOrUpdateClient() {
+        Long testClientId = 1L;
+        Client client = new Client();
+        Client clientWithId = new Client();
+        client.setId(testClientId);
+        when(clientRepository.save(client)).thenReturn(clientWithId);
+
+        clientService.createOrUpdateClient(client);
+
+        assertEquals(testClientId, client.getId());
+        verify(clientRepository).save(client);
+    }
+
+    @Test
+    public void testGetClientById() {
+        Long testClientId = 1L;
+        Client client = new Client();
+        client.setId(testClientId);
+        when(clientRepository.findOne(testClientId)).thenReturn(client);
+
+        Client returnedClient = clientService.getClientById(testClientId);
+
+        assertEquals(client, returnedClient);
+        verify(clientRepository).findOne(testClientId);
+    }
+
+    @Test
+    public void test() {
+        Long testClientId = 1L;
+        doNothing().when(clientRepository).delete(testClientId);
+
+        clientService.removeClientById(testClientId);
+
+        verify(clientRepository).delete(testClientId);
     }
 }

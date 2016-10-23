@@ -33,7 +33,7 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
-    public List<Reservation> reservationAll() {
+    public List<Reservation> findAllReservations() {
         return reservationRepository.findAll();
     }
 

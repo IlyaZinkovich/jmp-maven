@@ -39,7 +39,7 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
     }
 
     @Bean
-    LoggingInterceptor loggingInterceptor() {
+    public LoggingInterceptor loggingInterceptor() {
         return new LoggingInterceptor();
     }
 

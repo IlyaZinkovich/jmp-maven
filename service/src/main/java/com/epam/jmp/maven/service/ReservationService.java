@@ -10,6 +10,6 @@ public interface ReservationService {
     void createOrUpdateReservation(Reservation reservation);
     Reservation getReservationById(Long id);
     List<Reservation> findReservationsByDate(LocalDate date);
-    List<Reservation> reservationAll();
+    List<Reservation> findAllReservations();
     void removeReservationById(Long id);
 }

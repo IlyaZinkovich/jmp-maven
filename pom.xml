@@ -14,10 +14,11 @@
         <module>service</module>
         <module>api</module>
         <module>web</module>
+        <module>e2e</module>
     </modules>
 
     <properties>
-        <org.springframework.version>4.2.8.RELEASE</org.springframework.version>
+        <org.springframework.version>4.3.3.RELEASE</org.springframework.version>
         <hibernate.version>5.0.5.Final</hibernate.version>
         <org.slf4j.version>1.7.13</org.slf4j.version>
         <javax.servlet-api.version>3.1.0</javax.servlet-api.version>

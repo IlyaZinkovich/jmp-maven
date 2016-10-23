@@ -17,7 +17,7 @@ public class ReservationController {
 
     @RequestMapping(method = RequestMethod.GET)
     public List<Reservation> getReservationList(@RequestParam(name = "date") String date) {
-        if (date == null) return reservationService.reservationAll();
+        if (date == null) return reservationService.findAllReservations();
         return reservationService.findReservationsByDate(LocalDate.parse(date));
     }
 
